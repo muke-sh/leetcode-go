@@ -1,5 +1,6 @@
 package twosum
 
+// TwoSum https://leetcode.com/problems/two-sum/
 func TwoSum(nums []int, target int) []int {
 
 	sum_found := false
@@ -29,4 +30,22 @@ func TwoSum(nums []int, target int) []int {
 	}
 
 	return indices
+}
+
+func TwoSumHashMap(nums []int, target int) []int {
+
+	hm := make(map[int]int)
+
+	for i := 0; i < len(nums); i++ {
+
+		currenVal := nums[i]
+
+		if val, ok := hm[target-currenVal]; ok {
+			return []int{val, i}
+		}
+
+		hm[nums[i]] = i
+	}
+
+	return []int{-1, -1}
 }
